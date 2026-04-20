@@ -378,13 +378,13 @@
         1720,
         180
       ],
-      "id": "a1b2c3d4-e5f6-7890-abcd-tavily000001",
+      "id": "a1acfa77-48bf-4d6f-9e27-318e78e125bb",
       "name": "Tavily Search"
     },
     {
       "parameters": {
         "name": "tavily_search",
-        "description": "=Call this tool to perform web searches using Tavily.\nResearch Topic:\n{{ $json.output }}",
+        "description": "Call this tool to perform web searches using Tavily",
         "workflowId": {
           "__rl": true,
           "value": "TAVILY_TOOL_WORKFLOW_ID",
@@ -393,8 +393,12 @@
         },
         "workflowInputs": {
           "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
+          "value": {
+            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "query"
+          ],
           "schema": [
             {
               "id": "query",
@@ -417,8 +421,24 @@
         900,
         840
       ],
-      "id": "a1b2c3d4-e5f6-7890-abcd-tavily000002",
+      "id": "b71158fd-9d76-4fc4-86c5-891fca57686a",
       "name": "Tavily Search2"
+    },
+    {
+      "parameters": {
+        "content": "## Tavily Setup Required\nBefore activating this workflow, replace **TAVILY_TOOL_WORKFLOW_ID** in both \"Tavily Search\" and \"Tavily Search2\" nodes with the actual n8n workflow ID of the deployed Tavily tool workflow.\n\nEnsure the **TAVILY_API_KEY** credential is configured in n8n.",
+        "height": 220,
+        "width": 400,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1720,
+        -80
+      ],
+      "id": "63eba4f2-fd09-4f4c-b521-6d09d41448c2",
+      "name": "Sticky Note Tavily"
     },
     {
       "parameters": {
