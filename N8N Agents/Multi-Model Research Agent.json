@@ -341,6 +341,87 @@
     },
     {
       "parameters": {
+        "name": "tavily_search",
+        "description": "Call this tool to perform web searches using Tavily",
+        "workflowId": {
+          "__rl": true,
+          "value": "TAVILY_TOOL_WORKFLOW_ID",
+          "mode": "list",
+          "cachedResultName": "Tool: Tavily Search"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "query": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('query', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "query"
+          ],
+          "schema": [
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string"
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        180
+      ],
+      "id": "a1b2c3d4-e5f6-7890-abcd-tavily000001",
+      "name": "Tavily Search"
+    },
+    {
+      "parameters": {
+        "name": "tavily_search",
+        "description": "=Call this tool to perform web searches using Tavily.\nResearch Topic:\n{{ $json.output }}",
+        "workflowId": {
+          "__rl": true,
+          "value": "TAVILY_TOOL_WORKFLOW_ID",
+          "mode": "list",
+          "cachedResultName": "Tool: Tavily Search"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "query",
+              "displayName": "query",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
+      "typeVersion": 2,
+      "position": [
+        900,
+        840
+      ],
+      "id": "a1b2c3d4-e5f6-7890-abcd-tavily000002",
+      "name": "Tavily Search2"
+    },
+    {
+      "parameters": {
         "text": "=User input:\n{{ $('When Executed by Another Workflow').item.json['Research Topic'] }}",
         "attributes": {
           "attributes": [
@@ -848,6 +929,28 @@
       ]
     },
     "Perplexity API2": {
+      "ai_tool": [
+        [
+          {
+            "node": "Dataset Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tavily Search": {
+      "ai_tool": [
+        [
+          {
+            "node": "Research Manager",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tavily Search2": {
       "ai_tool": [
         [
           {
